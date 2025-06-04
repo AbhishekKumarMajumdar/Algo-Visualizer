@@ -15,6 +15,11 @@ import QuickSortVisualizer from './Algorithm/Sorting/QuickSortVisualizer';
 import SelectionSortVisualizer from './Algorithm/Sorting/SelectionSortVisualizer';
 import MergeSortVisualizer from './Algorithm/Sorting/MergeSortVisualizer';
 import HeapSortVisualizer from './Algorithm/Sorting/HeapSortVisualizer';
+import BinarySearchVisualizer from './Algorithm/Searching/BinarySearchVisualizer';
+import LinearSearchVisualizer from './Algorithm/Searching/LinearSearchVisualizer';
+import StackVisualizer from './Algorithm/DSA/StackVisualizer';
+import QueueVisualizer from './Algorithm/DSA/QueueVisualizer';
+import BSTVisualizer from './Algorithm/Searching/BSTVisualizer';
 
 function App() {
   const [showPopup, setShowPopup] = useState(false);
@@ -80,6 +85,18 @@ function App() {
           <Route path="/Algorithm/Sorting/heap-sort" element={  <HeapSortVisualizer/>} />
         
           
+          <Route path="/Algorithm/Searching/binary-search" element={  <BinarySearchVisualizer/>} />
+          <Route path="/Algorithm/Searching/linear-search" element={  <LinearSearchVisualizer/>} />
+          <Route path="/Algorithm/Searching/bst" element={  <BSTVisualizer/>} />
+        
+          <Route path="/Algorithm/DSA/stack" element={  <StackVisualizer/>} />
+          <Route path="/Algorithm/DSA/queue" element={  <QueueVisualizer/>} />
+        
+        
+        
+        
+        
+        
         </Routes>
         <Footer />
       </div>

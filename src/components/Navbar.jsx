@@ -5,6 +5,8 @@ function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [submenuOpen, setSubmenuOpen] = useState(false);
   const [sortingSubmenuOpen, setSortingSubmenuOpen] = useState(false);
+  const [searchingSubmenuOpen, setSearchingSubmenuOpen] = useState(false);
+  const [dataStructureSubmenuOpen, setDataStructureSubmenuOpen] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -13,6 +15,8 @@ function Navbar() {
         setMenuOpen(false);
         setSubmenuOpen(false);
         setSortingSubmenuOpen(false);
+        setSearchingSubmenuOpen(false);
+        setDataStructureSubmenuOpen(false);
       }
     }
     window.addEventListener("resize", handleResize);
@@ -65,6 +69,7 @@ function Navbar() {
               </svg>
             </div>
             <ul className="absolute left-0 top-full mt-1 w-48 bg-white border rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-200 z-50">
+              {/* Sorting submenu */}
               <li className="relative group px-4 py-2 hover:bg-purple-100">
                 <div className="flex justify-between items-center cursor-pointer">
                   <span>Sorting</span>
@@ -73,9 +78,7 @@ function Navbar() {
                   </svg>
                 </div>
                 <ul className="absolute top-0 left-full ml-1 w-48 bg-white border rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-200 z-50">
-                  <li onClick={() => handleNavigate("/Algorithm/Sorting/bubble-sort")} className="px-4 py-2 hover:bg-purple-100 cursor-pointer">
-                    Bubble Sort
-                  </li>
+                  <li onClick={() => handleNavigate("/Algorithm/Sorting/bubble-sort")} className="px-4 py-2 hover:bg-purple-100 cursor-pointer">Bubble Sort</li>
                   <li onClick={() => handleNavigate("/Algorithm/Sorting/insertion-sort")} className="px-4 py-2 hover:bg-purple-100 cursor-pointer">Insertion Sort</li>
                   <li onClick={() => handleNavigate("/Algorithm/Sorting/quick-sort")} className="px-4 py-2 hover:bg-purple-100 cursor-pointer">Quick Sort</li>
                   <li onClick={() => handleNavigate("/Algorithm/Sorting/selection-sort")} className="px-4 py-2 hover:bg-purple-100 cursor-pointer">Selection Sort</li>
@@ -83,9 +86,33 @@ function Navbar() {
                   <li onClick={() => handleNavigate("/Algorithm/Sorting/heap-sort")} className="px-4 py-2 hover:bg-purple-100 cursor-pointer">Heap Sort</li>
                 </ul>
               </li>
-              <li className="px-4 py-2 hover:bg-purple-100">Searching</li>
-              <li className="px-4 py-2 hover:bg-purple-100">Machine Learning</li>
-              <li className="px-4 py-2 hover:bg-purple-100">Data Structures</li>
+
+              {/* Searching submenu */}
+              <li className="relative group px-4 py-2 hover:bg-purple-100">
+                <div className="flex justify-between items-center cursor-pointer">
+                  <span>Searching</span>
+                  <svg className="w-3 h-3 ml-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+                <ul className="absolute top-0 left-full ml-1 w-48 bg-white border rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-200 z-50">
+                  <li onClick={() => handleNavigate("/Algorithm/Searching/linear-search")} className="px-4 py-2 hover:bg-purple-100 cursor-pointer">Linear Search</li>
+                  <li onClick={() => handleNavigate("/Algorithm/Searching/binary-search")} className="px-4 py-2 hover:bg-purple-100 cursor-pointer">Binary Search</li>
+                </ul>
+              </li>
+
+              {/* Data Structures submenu */}
+              <li className="relative group px-4 py-2 hover:bg-purple-100">
+                <div className="flex justify-between items-center cursor-pointer">
+                  <span>Data Structures</span>
+                  <svg className="w-3 h-3 ml-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+                <ul className="absolute top-0 left-full ml-1 w-48 bg-white border rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-200 z-50">
+                  <li onClick={() => handleNavigate("/DataStructure/stack")} className="px-4 py-2 hover:bg-purple-100 cursor-pointer">Stack</li>
+                </ul>
+              </li>
             </ul>
           </li>
           <li className="hover:text-purple-600 cursor-pointer">Websites</li>
@@ -102,7 +129,6 @@ function Navbar() {
 
       {/* Mobile Menu */}
       <div className={`lg:hidden fixed top-0 left-0 w-full h-full bg-white bg-opacity-95 backdrop-blur-sm transform transition-transform z-40 ${menuOpen ? "translate-x-0" : "-translate-x-full"}`}>
-        {/* Close button */}
         <div className="absolute top-4 right-4 z-50">
           <button onClick={() => setMenuOpen(false)} className="text-gray-700 text-2xl">&times;</button>
         </div>
@@ -127,16 +153,38 @@ function Navbar() {
               {sortingSubmenuOpen && (
                 <ul className="pl-4 space-y-2">
                   <li className="cursor-pointer hover:text-purple-600" onClick={() => handleNavigate("/Algorithm/Sorting/bubble-sort")}>Bubble Sort</li>
-                  <li className="cursor-pointer hover:text-purple-600"onClick={() => handleNavigate("/Algorithm/Sorting/insertion-sort")}>Insertion Sort</li>
-                  <li className="cursor-pointer hover:text-purple-600"onClick={() => handleNavigate("/Algorithm/Sorting/quick-sort")}>Quick Sort</li>
-                  <li className="cursor-pointer hover:text-purple-600"onClick={() => handleNavigate("/Algorithm/Sorting/selection-sort")}>Selection Sort</li>
-                  <li className="cursor-pointer hover:text-purple-600"onClick={() => handleNavigate("/Algorithm/Sorting/merge-sort")}>Merge Sort</li>
-                  <li className="cursor-pointer hover:text-purple-600"onClick={() => handleNavigate("/Algorithm/Sorting/heap-sort")}>Heap Sort</li>
+                  <li className="cursor-pointer hover:text-purple-600" onClick={() => handleNavigate("/Algorithm/Sorting/insertion-sort")}>Insertion Sort</li>
+                  <li className="cursor-pointer hover:text-purple-600" onClick={() => handleNavigate("/Algorithm/Sorting/quick-sort")}>Quick Sort</li>
+                  <li className="cursor-pointer hover:text-purple-600" onClick={() => handleNavigate("/Algorithm/Sorting/selection-sort")}>Selection Sort</li>
+                  <li className="cursor-pointer hover:text-purple-600" onClick={() => handleNavigate("/Algorithm/Sorting/merge-sort")}>Merge Sort</li>
+                  <li className="cursor-pointer hover:text-purple-600" onClick={() => handleNavigate("/Algorithm/Sorting/heap-sort")}>Heap Sort</li>
                 </ul>
               )}
-              <li className="cursor-pointer hover:text-purple-600">Searching</li>
-              <li className="cursor-pointer hover:text-purple-600">Machine Learning</li>
-              <li className="cursor-pointer hover:text-purple-600">Data Structures</li>
+
+              <div onClick={() => setSearchingSubmenuOpen(!searchingSubmenuOpen)} className="cursor-pointer hover:text-purple-600 flex justify-between">
+                <span>Searching</span>
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </div>
+              {searchingSubmenuOpen && (
+                <ul className="pl-4 space-y-2">
+                  <li className="cursor-pointer hover:text-purple-600" onClick={() => handleNavigate("/Algorithm/Searching/linear-search")}>Linear Search</li>
+                  <li className="cursor-pointer hover:text-purple-600" onClick={() => handleNavigate("/Algorithm/Searching/binary-search")}>Binary Search</li>
+                </ul>
+              )}
+
+              <div onClick={() => setDataStructureSubmenuOpen(!dataStructureSubmenuOpen)} className="cursor-pointer hover:text-purple-600 flex justify-between">
+                <span>Data Structures</span>
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </div>
+              {dataStructureSubmenuOpen && (
+                <ul className="pl-4 space-y-2">
+                  <li className="cursor-pointer hover:text-purple-600" onClick={() => handleNavigate("/Algorithm/DSA/stack")}>Stack</li>
+                </ul>
+              )}
             </ul>
           )}
           <div className="cursor-pointer hover:text-purple-600">Websites</div>
