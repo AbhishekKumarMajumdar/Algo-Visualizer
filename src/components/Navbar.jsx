@@ -77,6 +77,10 @@ function Navbar() {
                     Bubble Sort
                   </li>
                   <li onClick={() => handleNavigate("/Algorithm/Sorting/insertion-sort")} className="px-4 py-2 hover:bg-purple-100 cursor-pointer">Insertion Sort</li>
+                  <li onClick={() => handleNavigate("/Algorithm/Sorting/quick-sort")} className="px-4 py-2 hover:bg-purple-100 cursor-pointer">Quick Sort</li>
+                  <li onClick={() => handleNavigate("/Algorithm/Sorting/selection-sort")} className="px-4 py-2 hover:bg-purple-100 cursor-pointer">Selection Sort</li>
+                  <li onClick={() => handleNavigate("/Algorithm/Sorting/merge-sort")} className="px-4 py-2 hover:bg-purple-100 cursor-pointer">Merge Sort</li>
+                  <li onClick={() => handleNavigate("/Algorithm/Sorting/heap-sort")} className="px-4 py-2 hover:bg-purple-100 cursor-pointer">Heap Sort</li>
                 </ul>
               </li>
               <li className="px-4 py-2 hover:bg-purple-100">Searching</li>
@@ -124,6 +128,10 @@ function Navbar() {
                 <ul className="pl-4 space-y-2">
                   <li className="cursor-pointer hover:text-purple-600" onClick={() => handleNavigate("/Algorithm/Sorting/bubble-sort")}>Bubble Sort</li>
                   <li className="cursor-pointer hover:text-purple-600"onClick={() => handleNavigate("/Algorithm/Sorting/insertion-sort")}>Insertion Sort</li>
+                  <li className="cursor-pointer hover:text-purple-600"onClick={() => handleNavigate("/Algorithm/Sorting/quick-sort")}>Quick Sort</li>
+                  <li className="cursor-pointer hover:text-purple-600"onClick={() => handleNavigate("/Algorithm/Sorting/selection-sort")}>Selection Sort</li>
+                  <li className="cursor-pointer hover:text-purple-600"onClick={() => handleNavigate("/Algorithm/Sorting/merge-sort")}>Merge Sort</li>
+                  <li className="cursor-pointer hover:text-purple-600"onClick={() => handleNavigate("/Algorithm/Sorting/heap-sort")}>Heap Sort</li>
                 </ul>
               )}
               <li className="cursor-pointer hover:text-purple-600">Searching</li>

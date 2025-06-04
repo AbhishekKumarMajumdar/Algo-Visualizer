@@ -11,6 +11,10 @@ import StatsSection from './components/StatsSection';
 import NewsletterSignup from './components/NewsletterSignup';
 import BubbleSortVisualizer from './Algorithm/Sorting/BubbleSortVisualizer'; // Check this path
 import InsertionSortVisualizer from './Algorithm/Sorting/InsertionSortVisualizer'; // Check this path
+import QuickSortVisualizer from './Algorithm/Sorting/QuickSortVisualizer';
+import SelectionSortVisualizer from './Algorithm/Sorting/SelectionSortVisualizer';
+import MergeSortVisualizer from './Algorithm/Sorting/MergeSortVisualizer';
+import HeapSortVisualizer from './Algorithm/Sorting/HeapSortVisualizer';
 
 function App() {
   const [showPopup, setShowPopup] = useState(false);
@@ -70,6 +74,11 @@ function App() {
           {/* Bubble Sort Visualizer */}
           <Route path="/Algorithm/Sorting/bubble-sort" element={<BubbleSortVisualizer />} />
           <Route path="/Algorithm/Sorting/insertion-sort" element={<InsertionSortVisualizer />} />
+          <Route path="/Algorithm/Sorting/quick-sort" element={  <QuickSortVisualizer/>} />
+          <Route path="/Algorithm/Sorting/selection-sort" element={  <SelectionSortVisualizer/>} />
+          <Route path="/Algorithm/Sorting/merge-sort" element={  <MergeSortVisualizer/>} />
+          <Route path="/Algorithm/Sorting/heap-sort" element={  <HeapSortVisualizer/>} />
+        
           
         </Routes>
         <Footer />
