@@ -22,13 +22,13 @@ const Footer = () => {
           height="32"
         />
         <span className="font-semibold text-[#2f365f] text-lg leading-6 select-none">
-          Renderforest
+          Abhiko
         </span>
       </div>
 
       {/* Copyright */}
       <div className="text-black text-sm leading-5 select-none">
-        Renderforest © 2013 - 2025
+        Abhishek Kumar Majumdar © 2013 - 2025
       </div>
 
       {/* Social Icons */}
