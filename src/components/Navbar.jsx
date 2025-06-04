@@ -30,7 +30,8 @@ function Navbar() {
       <div className="flex items-center space-x-4">
         <img
           alt="Logo"
-          className="w-10 h-10 object-contain"
+          className="w-10 h-10 cursor object-contain"
+          onClick={() => handleNavigate("/")} 
           src="https://storage.googleapis.com/a1aa/image/6bc5fca2-5198-4c6d-3517-ceb42822e52a.jpg"
         />
       </div>
