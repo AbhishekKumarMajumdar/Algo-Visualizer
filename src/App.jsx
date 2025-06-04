@@ -10,6 +10,7 @@ import AiTools from './components/AiTools';
 import StatsSection from './components/StatsSection';
 import NewsletterSignup from './components/NewsletterSignup';
 import BubbleSortVisualizer from './Algorithm/Sorting/BubbleSortVisualizer'; // Check this path
+import InsertionSortVisualizer from './Algorithm/Sorting/InsertionSortVisualizer'; // Check this path
 
 function App() {
   const [showPopup, setShowPopup] = useState(false);
@@ -61,16 +62,20 @@ function App() {
                 <StatsSection />
                 <AiTools />
                 <NewsletterSignup />
-                <Footer />
+             
               </>
             }
           />
 
           {/* Bubble Sort Visualizer */}
           <Route path="/Algorithm/Sorting/bubble-sort" element={<BubbleSortVisualizer />} />
+          <Route path="/Algorithm/Sorting/insertion-sort" element={<InsertionSortVisualizer />} />
+          
         </Routes>
+        <Footer />
       </div>
     </Router>
+    
   );
 }
 

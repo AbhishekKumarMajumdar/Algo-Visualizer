@@ -29,7 +29,7 @@ const Footer = () => {
 
         {/* Copyright */}
         <div className="text-black text-sm leading-5 select-none text-center">
-          Abhishek Kumar Majumdar © 2013 - 2025
+          Abhishek Kumar Majumdar © 2025
         </div>
 
         {/* Social Icons */}

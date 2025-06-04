@@ -56,7 +56,6 @@ function Navbar() {
       {/* Desktop Menu */}
       <div className="hidden lg:flex items-center space-x-6 font-medium text-sm">
         <ul className="flex space-x-6">
-          {/* Algorithm with Submenu */}
           <li className="relative group cursor-pointer hover:text-purple-600">
             <div className="flex items-center">
               Algorithm
@@ -65,18 +64,19 @@ function Navbar() {
                 <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06-.02L10 10.585l3.71-3.395a.75.75 0 011.02 1.1l-4.25 3.89a.75.75 0 01-1.02 0l-4.25-3.89a.75.75 0 01-.02-1.06z" clipRule="evenodd" />
               </svg>
             </div>
-            {/* Dropdown */}
-            <ul className="absolute left-0 top-full mt-1 w-40 bg-white border border-gray-200 rounded shadow-lg opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-200 z-50">
+            <ul className="absolute left-0 top-full mt-1 w-48 bg-white border rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-200 z-50">
               <li className="relative group px-4 py-2 hover:bg-purple-100">
-                Sorting
-                {/* Nested submenu */}
-                <ul className="absolute top-0 left-full ml-1 w-40 bg-white border border-gray-200 rounded shadow-lg opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-200 z-50">
+                <div className="flex justify-between items-center cursor-pointer">
+                  <span>Sorting</span>
+                  <svg className="w-3 h-3 ml-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+                <ul className="absolute top-0 left-full ml-1 w-48 bg-white border rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-200 z-50">
                   <li onClick={() => handleNavigate("/Algorithm/Sorting/bubble-sort")} className="px-4 py-2 hover:bg-purple-100 cursor-pointer">
                     Bubble Sort
                   </li>
-                  <li className="px-4 py-2 hover:bg-purple-100 cursor-pointer">
-                    Insertion Sort
-                  </li>
+                  <li onClick={() => handleNavigate("/Algorithm/Sorting/insertion-sort")} className="px-4 py-2 hover:bg-purple-100 cursor-pointer">Insertion Sort</li>
                 </ul>
               </li>
               <li className="px-4 py-2 hover:bg-purple-100">Searching</li>
@@ -98,12 +98,12 @@ function Navbar() {
 
       {/* Mobile Menu */}
       <div className={`lg:hidden fixed top-0 left-0 w-full h-full bg-white bg-opacity-95 backdrop-blur-sm transform transition-transform z-40 ${menuOpen ? "translate-x-0" : "-translate-x-full"}`}>
+        {/* Close button */}
+        <div className="absolute top-4 right-4 z-50">
+          <button onClick={() => setMenuOpen(false)} className="text-gray-700 text-2xl">&times;</button>
+        </div>
         <div className="flex flex-col px-6 pt-20 space-y-6 text-gray-700 font-medium text-base">
-          {/* Algorithm Dropdown */}
-          <div
-            className="flex items-center justify-between cursor-pointer"
-            onClick={() => setSubmenuOpen(!submenuOpen)}
-          >
+          <div className="flex items-center justify-between cursor-pointer" onClick={() => setSubmenuOpen(!submenuOpen)}>
             <span className="flex items-center">
               Algorithm
               <span className="ml-2 text-xs font-bold text-white bg-pink-500 rounded px-1.5 py-0.5 uppercase">Beta</span>
@@ -114,10 +114,7 @@ function Navbar() {
           </div>
           {submenuOpen && (
             <ul className="pl-4 space-y-2">
-              <div
-                onClick={() => setSortingSubmenuOpen(!sortingSubmenuOpen)}
-                className="cursor-pointer hover:text-purple-600 flex justify-between"
-              >
+              <div onClick={() => setSortingSubmenuOpen(!sortingSubmenuOpen)} className="cursor-pointer hover:text-purple-600 flex justify-between">
                 <span>Sorting</span>
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                   <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
@@ -125,10 +122,8 @@ function Navbar() {
               </div>
               {sortingSubmenuOpen && (
                 <ul className="pl-4 space-y-2">
-                  <li className="cursor-pointer hover:text-purple-600" onClick={() => handleNavigate("/Algorithm/Sorting/bubble-sort")}>
-                    Bubble Sort
-                  </li>
-                  <li className="cursor-pointer hover:text-purple-600">Insertion Sort</li>
+                  <li className="cursor-pointer hover:text-purple-600" onClick={() => handleNavigate("/Algorithm/Sorting/bubble-sort")}>Bubble Sort</li>
+                  <li className="cursor-pointer hover:text-purple-600"onClick={() => handleNavigate("/Algorithm/Sorting/insertion-sort")}>Insertion Sort</li>
                 </ul>
               )}
               <li className="cursor-pointer hover:text-purple-600">Searching</li>

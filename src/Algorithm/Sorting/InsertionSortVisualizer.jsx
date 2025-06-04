@@ -2,46 +2,48 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const codeSnippets = {
-  python: `def bubble_sort(arr):
-    n = len(arr)
-    for i in range(n):
-        for j in range(0, n-i-1):
-            if arr[j] > arr[j+1]:
-                arr[j], arr[j+1] = arr[j+1], arr[j]`,
+  python: `def insertion_sort(arr):
+    for i in range(1, len(arr)):
+        key = arr[i]
+        j = i - 1
+        while j >= 0 and key < arr[j]:
+            arr[j + 1] = arr[j]
+            j -= 1
+        arr[j + 1] = key`,
 
-  c: `void bubbleSort(int arr[], int n) {
-    for (int i = 0; i < n-1; i++) {
-        for (int j = 0; j < n-i-1; j++) {
-            if (arr[j] > arr[j+1]) {
-                int temp = arr[j];
-                arr[j] = arr[j+1];
-                arr[j+1] = temp;
-            }
+  c: `void insertionSort(int arr[], int n) {
+    for (int i = 1; i < n; i++) {
+        int key = arr[i];
+        int j = i - 1;
+        while (j >= 0 && arr[j] > key) {
+            arr[j + 1] = arr[j];
+            j--;
         }
+        arr[j + 1] = key;
     }
 }`,
 
-  cpp: `void bubbleSort(vector<int>& arr) {
-    int n = arr.size();
-    for (int i = 0; i < n-1; i++) {
-        for (int j = 0; j < n-i-1; j++) {
-            if (arr[j] > arr[j+1]) {
-                swap(arr[j], arr[j+1]);
-            }
+  cpp: `void insertionSort(vector<int>& arr) {
+    for (int i = 1; i < arr.size(); i++) {
+        int key = arr[i];
+        int j = i - 1;
+        while (j >= 0 && arr[j] > key) {
+            arr[j + 1] = arr[j];
+            j--;
         }
+        arr[j + 1] = key;
     }
 }`,
 
-  java: `void bubbleSort(int arr[]) {
-    int n = arr.length;
-    for (int i = 0; i < n-1; i++) {
-        for (int j = 0; j < n-i-1; j++) {
-            if (arr[j] > arr[j+1]) {
-                int temp = arr[j];
-                arr[j] = arr[j+1];
-                arr[j+1] = temp;
-            }
+  java: `void insertionSort(int arr[]) {
+    for (int i = 1; i < arr.length; i++) {
+        int key = arr[i];
+        int j = i - 1;
+        while (j >= 0 && arr[j] > key) {
+            arr[j + 1] = arr[j];
+            j--;
         }
+        arr[j + 1] = key;
     }
 }`,
 };
@@ -60,7 +62,7 @@ const Arrow = ({ direction }) => (
   </svg>
 );
 
-const BubbleSortVisualizer = () => {
+const InsertionSortVisualizer = () => {
   const [array, setArray] = useState([5, 3, 8, 4, 2]);
   const [isSorting, setIsSorting] = useState(false);
   const [language, setLanguage] = useState("cpp");
@@ -75,39 +77,46 @@ const BubbleSortVisualizer = () => {
   const generateSortSteps = (arr) => {
     let steps = [];
     let tempArr = [...arr];
-    const n = tempArr.length;
-    for (let i = 0; i < n; i++) {
-      for (let j = 0; j < n - i - 1; j++) {
-        if (tempArr[j] > tempArr[j + 1]) {
-          [tempArr[j], tempArr[j + 1]] = [tempArr[j + 1], tempArr[j]];
-        }
+    for (let i = 1; i < tempArr.length; i++) {
+      let key = tempArr[i];
+      let j = i - 1;
+      while (j >= 0 && tempArr[j] > key) {
+        tempArr[j + 1] = tempArr[j];
+        j--;
       }
+      tempArr[j + 1] = key;
       steps.push([...tempArr]);
     }
     return steps;
   };
 
-  const bubbleSort = async () => {
+  const insertionSort = async () => {
     setIsSorting(true);
     setSortedIndices(new Set());
     let arr = [...array];
     let sortedSet = new Set();
 
-    for (let i = 0; i < arr.length; i++) {
-      for (let j = 0; j < arr.length - i - 1; j++) {
-        setCurrentIndices({ i: j, j: j + 1 });
+    for (let i = 1; i < arr.length; i++) {
+      let key = arr[i];
+      let j = i - 1;
+      setCurrentIndices({ i, j });
+      await delay(400);
+
+      while (j >= 0 && arr[j] > key) {
+        setSwapInfo({ from: j + 1, to: j });
+        arr[j + 1] = arr[j];
+        setArray([...arr]);
+        await delay(600);
         setSwapInfo(null);
-        await delay(400);
-        if (arr[j] > arr[j + 1]) {
-          setSwapInfo({ from: j, to: j + 1 });
-          [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
-          setArray([...arr]);
-          await delay(600);
-          setSwapInfo(null);
-        }
+        j--;
+        setCurrentIndices({ i, j });
       }
-      sortedSet.add(arr.length - i - 1);
+
+      arr[j + 1] = key;
+      setArray([...arr]);
+      sortedSet.add(i);
       setSortedIndices(new Set(sortedSet));
+      await delay(300);
     }
 
     for (let k = 0; k < arr.length; k++) {
@@ -150,7 +159,7 @@ const BubbleSortVisualizer = () => {
   return (
     <div className="px-6 py-10 max-w-5xl mx-auto text-center select-none">
       <h2 className="text-4xl font-black mb-10 text-[#1f2943]">
-        Bubble Sort <span className="text-[#8b7de9] font-extrabold">Visualizer</span>
+        Insertion Sort <span className="text-[#8b7de9] font-extrabold">Visualizer</span>
       </h2>
 
       <input
@@ -194,7 +203,7 @@ const BubbleSortVisualizer = () => {
                 }}
                 initial={{ scale: 0.9 }}
                 animate={{ scale: 1 }}
-                transition={{ duration: 0.3 }}
+                transition={{ duration: 0.5 }}
               >
                 {value}
               </motion.div>
@@ -219,7 +228,7 @@ const BubbleSortVisualizer = () => {
 
       <div className="flex justify-center gap-4 mb-6 flex-wrap">
         <button
-          onClick={bubbleSort}
+          onClick={insertionSort}
           disabled={isSorting}
           className="bg-gradient-to-br from-[#7c7ff7] to-[#5a5de0] text-white px-5 py-2 rounded hover:brightness-110 disabled:opacity-50"
         >
@@ -237,9 +246,9 @@ const BubbleSortVisualizer = () => {
       <div className="text-left max-w-3xl mx-auto">
         <h3 className="font-semibold">Definition:</h3>
         <p>
-          Bubble Sort is a simple sorting algorithm that works by repeatedly swapping
-          adjacent elements if they are in the wrong order. It is named because
-          smaller elements "bubble" to the top of the list with each iteration.
+          Insertion Sort is a simple sorting algorithm that builds the final sorted array
+          one item at a time. It is much less efficient on large lists than more advanced
+          algorithms such as quicksort or mergesort.
         </p>
 
         <h3 className="font-semibold my-4">Time Complexity:</h3>
@@ -248,14 +257,16 @@ const BubbleSortVisualizer = () => {
 - Average Case: O(n^2)<br/>
 - Worst Case: O(n^2)<br/>
         </pre>
-<div className="text-left max-w-3xl mx-auto text-[#1f2943]">
-        <h3 className="text-xl font-semibold mb-2 my-4">Step-by-step sorting:</h3>
-        <ol className="list-decimal list-inside">
-          {sortSteps.map((step, idx) => (
-            <li key={idx}>After pass {idx + 1}: [{step.join(", ")}]</li>
-          ))}
-        </ol>
-      </div>
+
+        <div className="text-left max-w-3xl mx-auto text-[#1f2943]">
+          <h3 className="text-xl font-semibold mb-2 my-4">Step-by-step sorting:</h3>
+          <ol className="list-decimal list-inside">
+            {sortSteps.map((step, idx) => (
+              <li key={idx}>After pass {idx + 1}: [{step.join(", ")}]</li>
+            ))}
+          </ol>
+        </div>
+
         <h3 className="font-semibold mt-4">Code ({language.toUpperCase()}):</h3>
         <pre className="bg-gray-900 text-white p-4 rounded overflow-x-auto">
           <code>{codeSnippets[language]}</code>
@@ -280,4 +291,4 @@ const BubbleSortVisualizer = () => {
   );
 };
 
-export default BubbleSortVisualizer;
+export default InsertionSortVisualizer;
