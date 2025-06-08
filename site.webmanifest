@@ -1,0 +1,11 @@
+{
+  "name": "DSA Visualizer by Abhishek Kumar Majumdar",
+  "short_name": "DSA Visualizer",
+  "description": "Interactive tool to visualize DSA algorithms like Bubble Sort, Merge Sort, Linear & Binary Search by Abhishek Kumar Majumdar.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1e293b",
+  "orientation": "portrait"
+
+}
