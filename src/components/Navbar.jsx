@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
+import Logo from "../Asset/image/Logo.png"
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [submenuOpen, setSubmenuOpen] = useState(false);
@@ -34,9 +34,9 @@ function Navbar() {
       <div className="flex items-center space-x-4">
         <img
           alt="Logo"
-          className="w-10 h-10 cursor object-contain"
+          className="w-20 h-20 cursor-pointer object-contain"
           onClick={() => handleNavigate("/")} 
-          src="https://storage.googleapis.com/a1aa/image/6bc5fca2-5198-4c6d-3517-ceb42822e52a.jpg"
+          src={Logo}
         />
       </div>
 
@@ -98,6 +98,7 @@ function Navbar() {
                 <ul className="absolute top-0 left-full ml-1 w-48 bg-white border rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-200 z-50">
                   <li onClick={() => handleNavigate("/Algorithm/Searching/linear-search")} className="px-4 py-2 hover:bg-purple-100 cursor-pointer">Linear Search</li>
                   <li onClick={() => handleNavigate("/Algorithm/Searching/binary-search")} className="px-4 py-2 hover:bg-purple-100 cursor-pointer">Binary Search</li>
+                  <li onClick={() => handleNavigate("/Algorithm/Searching/bst")} className="px-4 py-2 hover:bg-purple-100 cursor-pointer">Binary Search Tree</li>
                 </ul>
               </li>
 
@@ -111,6 +112,7 @@ function Navbar() {
                 </div>
                 <ul className="absolute top-0 left-full ml-1 w-48 bg-white border rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-200 z-50">
                   <li onClick={() => handleNavigate("/DataStructure/stack")} className="px-4 py-2 hover:bg-purple-100 cursor-pointer">Stack</li>
+                  <li onClick={() => handleNavigate("/DataStructure/queue")} className="px-4 py-2 hover:bg-purple-100 cursor-pointer">Queue</li>
                 </ul>
               </li>
             </ul>
@@ -171,6 +173,7 @@ function Navbar() {
                 <ul className="pl-4 space-y-2">
                   <li className="cursor-pointer hover:text-purple-600" onClick={() => handleNavigate("/Algorithm/Searching/linear-search")}>Linear Search</li>
                   <li className="cursor-pointer hover:text-purple-600" onClick={() => handleNavigate("/Algorithm/Searching/binary-search")}>Binary Search</li>
+                  <li className="cursor-pointer hover:text-purple-600" onClick={() => handleNavigate("/Algorithm/Searching/bst")}>Binary Search Tree</li>
                 </ul>
               )}
 
@@ -183,6 +186,7 @@ function Navbar() {
               {dataStructureSubmenuOpen && (
                 <ul className="pl-4 space-y-2">
                   <li className="cursor-pointer hover:text-purple-600" onClick={() => handleNavigate("/Algorithm/DSA/stack")}>Stack</li>
+                  <li className="cursor-pointer hover:text-purple-600" onClick={() => handleNavigate("/Algorithm/DSA/queue")}>Queue</li>
                 </ul>
               )}
             </ul>

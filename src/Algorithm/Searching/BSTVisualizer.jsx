@@ -9,13 +9,13 @@ class TreeNode {
   }
 }
 
-// Tree component
 export default function BSTVisualizer() {
   const [root, setRoot] = useState(null);
   const [input, setInput] = useState("");
   const [searchResult, setSearchResult] = useState(null);
   const [highlightPath, setHighlightPath] = useState([]);
   const [treeHeight, setTreeHeight] = useState(600);
+  const [traversalResult, setTraversalResult] = useState([]);
 
   const calculateHeight = (node) => {
     if (!node) return 0;
@@ -72,6 +72,35 @@ export default function BSTVisualizer() {
     }
   };
 
+  // Traversal logic with animation
+  const traverseWithAnimation = async (type) => {
+    const path = [];
+    const traverse = async (node) => {
+      if (!node) return;
+      if (type === "pre") {
+        path.push(node.value);
+        setHighlightPath([...path]);
+        await new Promise((res) => setTimeout(res, 600));
+      }
+      await traverse(node.left);
+      if (type === "in") {
+        path.push(node.value);
+        setHighlightPath([...path]);
+        await new Promise((res) => setTimeout(res, 600));
+      }
+      await traverse(node.right);
+      if (type === "post") {
+        path.push(node.value);
+        setHighlightPath([...path]);
+        await new Promise((res) => setTimeout(res, 600));
+      }
+    };
+    setHighlightPath([]);
+    setTraversalResult([]);
+    await traverse(root);
+    setTraversalResult(path);
+  };
+
   const renderTree = (node, x = 0, y = 0, level = 0, parentX = null, parentY = null) => {
     if (!node) return null;
 
@@ -120,18 +149,21 @@ export default function BSTVisualizer() {
           className="border px-4 py-2 rounded w-full mb-3"
           placeholder="Enter value"
         />
-        <div className="flex gap-2 w-full justify-center">
-          <button
-            onClick={handleInsert}
-            className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
-          >
+        <div className="flex flex-wrap gap-2 w-full justify-center">
+          <button onClick={handleInsert} className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
             Insert
           </button>
-          <button
-            onClick={handleSearch}
-            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-          >
+          <button onClick={handleSearch} className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
             Search
+          </button>
+          <button onClick={() => traverseWithAnimation("in")} className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">
+            Inorder
+          </button>
+          <button onClick={() => traverseWithAnimation("pre")} className="bg-orange-600 text-white px-4 py-2 rounded hover:bg-orange-700">
+            Preorder
+          </button>
+          <button onClick={() => traverseWithAnimation("post")} className="bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-700">
+            Postorder
           </button>
         </div>
       </div>
@@ -153,6 +185,12 @@ export default function BSTVisualizer() {
           {renderTree(root, 600, 40)}
         </svg>
       </div>
+
+      {traversalResult.length > 0 && (
+        <div className="text-center font-semibold text-gray-700 mt-4">
+          Traversal Order: {traversalResult.join(" → ")}
+        </div>
+      )}
       <div className="text-left max-w-3xl mx-auto">
   <h3 className="font-semibold">Definition:</h3>
   <p>
@@ -191,6 +229,8 @@ export default function BSTVisualizer() {
   </pre>
 </div>
 
+    
     </div>
+    
   );
 }

@@ -8,6 +8,7 @@ import {
   faYoutube,
   faLinkedinIn,
 } from "@fortawesome/free-brands-svg-icons";
+import Logo from "../Asset/image/Logo.png"
 
 const Footer = () => {
   return (
@@ -16,11 +17,11 @@ const Footer = () => {
         {/* Logo and Brand */}
         <div className="flex items-center space-x-3">
           <img
-            src="https://storage.googleapis.com/a1aa/image/26d8d310-f6af-4858-1d01-82e7d695baac.jpg"
+            src={Logo}
             alt="Renderforest logo"
             className="w-8 h-8"
-            width="32"
-            height="32"
+            width="52"
+            height="52"
           />
           <span className="font-semibold text-[#2f365f] text-lg leading-6 select-none">
             Abhiko
