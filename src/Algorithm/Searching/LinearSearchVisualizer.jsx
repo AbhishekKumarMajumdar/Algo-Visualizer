@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 
 const LinearSearchVisualizer = () => {
   const [inputValue, setInputValue] = useState("25, 10, 40, 60, 30");
@@ -43,6 +44,54 @@ const LinearSearchVisualizer = () => {
 
   return (
     <div className="px-6 py-10 max-w-4xl mx-auto text-center select-none">
+      import { Helmet } from "react-helmet-async";
+
+<Helmet>
+  <title>Linear Search Visualizer | Code Buddy by Abhishek Kumar Majumdar</title>
+  <meta
+    name="description"
+    content="Step-by-step visual representation of Linear Search on arrays. Built by Abhishek Kumar Majumdar using Code Buddy."
+  />
+  <meta
+    name="keywords"
+    content="Linear Search, Linear Search Visualizer, Abhishek Kumar Majumdar, Code Buddy, DSA Search Algorithm, Visualize Searching"
+  />
+  <meta name="author" content="Abhishek Kumar Majumdar" />
+  <link
+    rel="canonical"
+    href="https://www.codebuddy.fun/Algorithm/Searching/linear-search"
+  />
+  <meta property="og:title" content="Linear Search Visualizer - Code Buddy" />
+  <meta
+    property="og:description"
+    content="Visualize how Linear Search works. Made by Abhishek Kumar Majumdar on Code Buddy."
+  />
+  <meta
+    property="og:image"
+    content="https://res.cloudinary.com/djgzl5zcl/image/upload/v1749448128/Logo_e0ssct.png"  // ✅ Replace with real image path if available
+  />
+  <meta
+    property="og:url"
+    content="https://www.codebuddy.fun/Algorithm/Searching/linear-search"
+  />
+  <meta property="og:type" content="website" />
+  <script type="application/ld+json">
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      name: "Linear Search Visualizer",
+      operatingSystem: "All",
+      applicationCategory: "EducationApplication",
+      url: "https://www.codebuddy.fun/Algorithm/Searching/linear-search",
+      author: {
+        "@type": "Person",
+        name: "Abhishek Kumar Majumdar",
+        url: "https://abhishekkumarmajumdar.in",
+      },
+    })}
+  </script>
+</Helmet>
+
       <h2 className="text-4xl font-black mb-6 text-[#1f2943]">
         Linear Search <span className="text-[#8b7de9] font-extrabold">Visualizer</span>
       </h2>

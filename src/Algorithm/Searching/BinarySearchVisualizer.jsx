@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-
+import { Helmet } from "react-helmet-async";
 const BinarySearchVisualizer = () => {
   const [inputValue, setInputValue] = useState("10, 20, 30, 40, 50, 60, 70");
   const [array, setArray] = useState([10, 20, 30, 40, 50, 60, 70]);
@@ -62,6 +62,54 @@ const BinarySearchVisualizer = () => {
 
   return (
     <div className="px-6 py-10 max-w-4xl mx-auto text-center select-none">
+      <Helmet>
+  <title>Binary Search Visualizer | Code Buddy by Abhishek Kumar Majumdar</title>
+  <meta
+    name="description"
+    content="Explore Binary Search visually step-by-step using Code Buddy. Created by Abhishek Kumar Majumdar, this tool helps you understand the search algorithm with animation."
+  />
+  <meta
+    name="keywords"
+    content="Binary Search, Binary Search Visualizer, Code Buddy, Abhishek Kumar Majumdar, DSA Visualizer, Search Algorithm, Data Structures"
+  />
+  <meta name="author" content="Abhishek Kumar Majumdar" />
+  <link
+    rel="canonical"
+    href="https://www.codebuddy.fun/Algorithm/Searching/binary-search"
+  />
+  <meta property="og:title" content="Binary Search Visualizer - Code Buddy" />
+  <meta
+    property="og:description"
+    content="Understand Binary Search visually. Created by Abhishek Kumar Majumdar on Code Buddy."
+  />
+  <meta
+    property="og:image"
+    content="https://res.cloudinary.com/djgzl5zcl/image/upload/v1749448128/Logo_e0ssct.png"
+  />
+  <meta
+    property="og:url"
+    content="https://www.codebuddy.fun/Algorithm/Searching/binary-search"
+  />
+  <meta property="og:type" content="website" />
+  <script type="application/ld+json">
+    {`
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Binary Search Visualizer",
+        "operatingSystem": "All",
+        "applicationCategory": "EducationApplication",
+        "url": "https://www.codebuddy.fun/Algorithm/Searching/binary-search",
+        "author": {
+          "@type": "Person",
+          "name": "Abhishek Kumar Majumdar",
+          "url": "https://abhishekkumarmajumdar.in"
+        }
+      }
+    `}
+  </script>
+</Helmet>
+
       <h2 className="text-4xl font-black mb-6 text-[#1f2943]">
         Binary Search <span className="text-[#8b7de9] font-extrabold">Visualizer</span>
       </h2>
@@ -162,7 +210,9 @@ const BinarySearchVisualizer = () => {
 - Worst Case: O(log n)<br/>
         </pre>
       </div>
+      
     </div>
+    
   );
 };
 

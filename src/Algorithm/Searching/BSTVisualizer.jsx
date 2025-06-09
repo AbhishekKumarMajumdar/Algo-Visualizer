@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 
 // Define the Node structure
 class TreeNode {
@@ -139,6 +140,54 @@ export default function BSTVisualizer() {
 
   return (
     <div className="p-4 md:p-6">
+      import { Helmet } from "react-helmet-async";
+
+<Helmet>
+  <title>Binary Search Tree Visualizer | Code Buddy by Abhishek Kumar Majumdar</title>
+  <meta
+    name="description"
+    content="Visualize Binary Search Tree operations step-by-step on Code Buddy. Created by Abhishek Kumar Majumdar."
+  />
+  <meta
+    name="keywords"
+    content="Binary Search Tree, BST Visualizer, Code Buddy, Abhishek Kumar Majumdar, DSA Visualizer, Tree Algorithm"
+  />
+  <meta name="author" content="Abhishek Kumar Majumdar" />
+  <link
+    rel="canonical"
+    href="https://www.codebuddy.fun/Algorithm/Searching/bst"
+  />
+  <meta property="og:title" content="Binary Search Tree Visualizer - Code Buddy" />
+  <meta
+    property="og:description"
+    content="Visualize BST creation, insertion, search and traversal. Built by Abhishek Kumar Majumdar."
+  />
+  <meta
+    property="og:image"
+    content="https://res.cloudinary.com/djgzl5zcl/image/upload/v1749448128/Logo_e0ssct.png"  // ✅ Change to actual image path
+  />
+  <meta
+    property="og:url"
+    content="https://www.codebuddy.fun/Algorithm/Searching/bst"
+  />
+  <meta property="og:type" content="website" />
+  <script type="application/ld+json">
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      name: "Binary Search Tree Visualizer",
+      operatingSystem: "All",
+      applicationCategory: "EducationApplication",
+      url: "https://www.codebuddy.fun/Algorithm/Searching/bst",
+      author: {
+        "@type": "Person",
+        name: "Abhishek Kumar Majumdar",
+        url: "https://abhishekkumarmajumdar.in",
+      },
+    })}
+  </script>
+</Helmet>
+
       <h1 className="text-xl md:text-2xl font-bold text-center mb-4">Binary Search Tree Visualizer</h1>
 
       <div className="flex flex-col items-center mb-6 w-full max-w-sm mx-auto">

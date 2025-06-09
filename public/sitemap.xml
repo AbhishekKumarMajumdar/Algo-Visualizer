@@ -33,6 +33,11 @@
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
+  <url>
+    <loc>https://www.codebuddy.fun/Algorithm/Searching/bst</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
 
   <!-- Stack Visualization -->
   <url>
