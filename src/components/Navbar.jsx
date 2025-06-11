@@ -118,7 +118,7 @@ function Navbar() {
               </li>
             </ul>
           </li>
-          <li className="hover:text-purple-600 cursor-pointer">Websites</li>
+          <li className="hover:text-purple-600 cursor-pointer">Beta</li>
           <li className="hover:text-purple-600 cursor-pointer">Mockups</li>
           <li className="hover:text-purple-600 cursor-pointer">Designs</li>
         </ul>
