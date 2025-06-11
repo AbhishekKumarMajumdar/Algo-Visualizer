@@ -46,54 +46,76 @@ export default function Compiler() {
   };
 
   return (
-    <div className="flex h-screen">
-      {/* Description Panel */}
-      <div className="w-1/2 p-4 overflow-y-auto border-r bg-gray-50">
-        <h2 className="text-xl font-bold mb-2">3447. Assign Elements to Groups with Constraints</h2>
-        <p className="mb-2">
-          You are given an integer array <code>groups</code>, and an array <code>elements</code>.
-          Your task is to assign one element to each group based on the following rules:
-        </p>
-        <ul className="list-disc ml-6 mb-2">
-          <li>An element at index j can be assigned to a group i if <code>groups[i]</code> is divisible by <code>elements[j]</code>.</li>
-          <li>If there are multiple elements, choose the one with the smallest index.</li>
-          <li>If no match, assign -1 to that group.</li>
-        </ul>
-        <h3 className="font-semibold mt-4">Example:</h3>
-        <pre className="bg-gray-200 p-2 rounded text-sm mt-2">
-{`Input:
-groups = [8,4,3,2,4]
-elements = [4,2]
-
-Expected Output:
-[0,0,-1,1,0]`}
-        </pre>
-        <h3 className="font-semibold mt-4">Testcase Input:</h3>
-        <textarea
-          className="w-full p-2 mt-2 border rounded bg-white text-sm"
-          rows={4}
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-        />
+    <div className="flex h-screen bg-[#1e1e1e] text-white">
+      {/* Sidebar */}
+      <div className="w-16 bg-[#2d2d2d] flex flex-col items-center py-4 space-y-4">
+        <div className="w-8 h-8 bg-gray-600 rounded" title="File"></div>
+        <div className="w-8 h-8 bg-gray-600 rounded" title="C++"></div>
+        <div className="w-8 h-8 bg-gray-600 rounded" title="Java"></div>
+        <div className="w-8 h-8 bg-gray-600 rounded" title="Python"></div>
+        <div className="w-8 h-8 bg-gray-600 rounded" title="JS"></div>
       </div>
 
-      {/* Code Editor & Output */}
-      <div className="w-1/2 flex flex-col">
-        <div className="flex items-center justify-between p-4 border-b bg-white">
-          <LanguageSelector selected={languageId} onChange={setLanguageId} />
-          <button
-            onClick={handleRun}
-            disabled={isRunning}
-            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-          >
-            {isRunning ? "Running..." : "Run"}
-          </button>
+      {/* Main Content */}
+      <div className="flex-1 flex flex-col">
+        {/* Toolbar */}
+        <div className="flex items-center justify-between bg-[#2d2d2d] px-4 py-2 text-sm border-b border-gray-700">
+          <span className="text-gray-300">main.cpp</span>
+          <div className="flex items-center space-x-2">
+            <button
+              onClick={handleRun}
+              disabled={isRunning}
+              className="bg-blue-600 text-white px-4 py-1 rounded text-sm hover:bg-blue-700"
+            >
+              {isRunning ? "Running..." : "Run"}
+            </button>
+            <button
+              onClick={() => {
+                setOutput("");
+                setError("");
+              }}
+              className="border px-3 py-1 text-sm rounded hover:bg-gray-600"
+            >
+              Clear
+            </button>
+          </div>
         </div>
-        <div className="flex-1 overflow-auto">
-          <CodeEditor code={code} onChange={setCode} />
-        </div>
-        <div className="h-40 border-t bg-gray-100 overflow-auto p-2">
-          <Output output={output} error={error} />
+
+        {/* Editor and Output Split */}
+        <div className="flex flex-1">
+          {/* Problem + Editor */}
+          <div className="w-1/2 border-r border-gray-700">
+            <div className="p-4 border-b border-gray-700">
+              <h2 className="text-lg font-semibold mb-2">Problem Statement</h2>
+              <p className="text-sm text-gray-300">
+                Write a program that reads an array of integers and prints them in reverse order.
+              </p>
+              <div className="mt-2 text-xs text-gray-400">
+                Input: 8 4 3 2 4\n4 2 <br />
+                Output: 2 4 2 3 4 8
+              </div>
+            </div>
+            <CodeEditor code={code} onChange={setCode} />
+          </div>
+
+          {/* Output Section */}
+          <div className="w-1/2 flex flex-col">
+            <div className="flex items-center justify-between bg-[#2d2d2d] px-4 py-2 text-sm border-b border-gray-700">
+              <span>Output</span>
+              <span className="text-xs text-gray-400">Custom Input</span>
+            </div>
+            <div className="p-2 flex-1 overflow-auto">
+              <Output output={output} error={error} />
+            </div>
+            <div className="border-t border-gray-700 p-2">
+              <textarea
+                className="w-full p-2 bg-[#2d2d2d] text-white text-sm border border-gray-600 rounded"
+                rows={4}
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>
