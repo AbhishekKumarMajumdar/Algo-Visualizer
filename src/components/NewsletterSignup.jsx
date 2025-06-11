@@ -24,7 +24,7 @@ const NewsletterSignup = () => {
         {/* Form */}
         <form className="relative z-10 flex flex-col items-center gap-4 max-w-3xl w-full text-center">
           <h2 className="text-white text-xl sm:text-2xl font-semibold leading-tight">
-            Join Renderforest newsletter
+            Join Abhiko newsletter
           </h2>
           <p className="text-[#e1e6f0] text-sm sm:text-base max-w-md">
             Be among the first ones to receive our latest news and offers
