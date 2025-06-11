@@ -21,6 +21,8 @@ import LinearSearchVisualizer from './Algorithm/Searching/LinearSearchVisualizer
 import StackVisualizer from './Algorithm/DSA/StackVisualizer';
 import QueueVisualizer from './Algorithm/DSA/QueueVisualizer';
 import BSTVisualizer from './Algorithm/Searching/BSTVisualizer';
+import ArrayVisualizer from './Algorithm/DSA/ArrayVisualizer';
+import Compiler from './components/Compiler/Compiler';
 
 function App() {
   const [showPopup, setShowPopup] = useState(false);
@@ -93,6 +95,13 @@ function App() {
             {/* DSA Visualizers */}
             <Route path="/Algorithm/DSA/stack" element={<StackVisualizer />} />
             <Route path="/Algorithm/DSA/queue" element={<QueueVisualizer />} />
+            <Route path="/Algorithm/DSA/array" element={<ArrayVisualizer />} />
+
+
+
+
+              {/* Beta  Version  */}
+            <Route path="/beta/compiler" element={<Compiler />} />
           </Routes>
 
           <Footer />

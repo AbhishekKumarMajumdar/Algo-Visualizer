@@ -113,6 +113,7 @@ function Navbar() {
                 <ul className="absolute top-0 left-full ml-1 w-48 bg-white border rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-200 z-50">
                   <li onClick={() => handleNavigate("/DataStructure/stack")} className="px-4 py-2 hover:bg-purple-100 cursor-pointer">Stack</li>
                   <li onClick={() => handleNavigate("/DataStructure/queue")} className="px-4 py-2 hover:bg-purple-100 cursor-pointer">Queue</li>
+                  <li onClick={() => handleNavigate("/DataStructure/array")} className="px-4 py-2 hover:bg-purple-100 cursor-pointer">Array</li>
                 </ul>
               </li>
             </ul>
@@ -187,6 +188,7 @@ function Navbar() {
                 <ul className="pl-4 space-y-2">
                   <li className="cursor-pointer hover:text-purple-600" onClick={() => handleNavigate("/Algorithm/DSA/stack")}>Stack</li>
                   <li className="cursor-pointer hover:text-purple-600" onClick={() => handleNavigate("/Algorithm/DSA/queue")}>Queue</li>
+                  <li className="cursor-pointer hover:text-purple-600" onClick={() => handleNavigate("/Algorithm/DSA/array")}>Array</li>
                 </ul>
               )}
             </ul>
